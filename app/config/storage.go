@@ -14,6 +14,7 @@ const (
 	BALLCHASING_NAME = "Ballchasing"
 	BLAST_NAME       = "BLAST.tv"
 	REPLAYLABS_NAME  = "ReplayLabs"
+	RLFILMROOM_NAME  = "RL Film Room"
 	LOCALHOST_NAME   = "Localhost"
 	FILE_SYSTEM_NAME = "FileSystem"
 )
@@ -55,6 +56,14 @@ func (wls *storageListConfig) UnmarshalJSON(data []byte) error {
 		temp = append(temp, &fresh)
 	} else {
 		reconcilePreset(temp[replayLabsIndex], REPLAYLABS_STORAGE)
+	}
+
+	rlFilmRoomIndex := slices.IndexFunc(temp, func(c *StorageConfig) bool { return c.Name == RLFILMROOM_NAME })
+	if rlFilmRoomIndex == -1 {
+		fresh := *RLFILMROOM_STORAGE
+		temp = append(temp, &fresh)
+	} else {
+		reconcilePreset(temp[rlFilmRoomIndex], RLFILMROOM_STORAGE)
 	}
 
 	fileSystemIndex := slices.IndexFunc(temp, func(c *StorageConfig) bool { return c.Name == FILE_SYSTEM_NAME })

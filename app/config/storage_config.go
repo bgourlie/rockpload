@@ -39,6 +39,7 @@ var STORAGE_PRESET = map[string]*StorageConfig{
 	BALLCHASING_NAME:   BALLCHASING_STORAGE,
 	BLAST_NAME:         BLAST_STORAGE,
 	REPLAYLABS_NAME:    REPLAYLABS_STORAGE,
+	RLFILMROOM_NAME:    RLFILMROOM_STORAGE,
 	FILE_SYSTEM_NAME:   FILE_SYSTEM_STORAGE,
 }
 
@@ -130,6 +131,31 @@ var REPLAYLABS_STORAGE = &StorageConfig{
 	LivePath:     "",
 	RenameStyle:  RenameDisabled,
 	RenamePath:   "",
+}
+
+var RLFILMROOM_STORAGE = &StorageConfig{
+	Name:                RLFILMROOM_NAME,
+	HelpText:            "Need a key? Click here",
+	HelpURL:             "https://rlfilmroom.com/settings",
+	UploadStyle:         MultipartUpload,
+	ReplayPath:          "/replays",
+	URL:                 "https://rlfilmroom.com/api/client",
+	IsPrimary:           false,
+	IsPredefined:        true,
+	IsTemporary:         false,
+	Enabled:             false,
+	URIParams:           map[string]string{},
+	TokenStyle:          BearerToken,
+	Token:               "",
+	PingStyle:           PingRequiresOK,
+	PingPath:            "/account",
+	TemplateName:        "",
+	LiveStyle:           LiveDisabled,
+	LivePath:            "",
+	RenameStyle:         RenameDisabled,
+	RenamePath:          "",
+	PlaylistFilterStyle: PlaylistFilterWhitelist,
+	FilteredPlaylists:   []PlaylistFilterEntry{{ID: 10}, {ID: 11}, {ID: 13}, {ID: 34}},
 }
 
 var FILE_SYSTEM_STORAGE = &StorageConfig{
